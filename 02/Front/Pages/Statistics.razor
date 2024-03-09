@@ -1,0 +1,37 @@
+@page "/statistics"
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@using Core
+
+<PageTitle>Array Statistics</PageTitle>
+
+<RadzenListBox TValue="int" Style="height: 400px;" Data="@(StatisticsState.Value.Ints.Select((item, index) => new { Item = item, Index = index }).ToList())" Value="@StatisticsState.Value.Current" Change="@(value => ChangeCurrent((value as int?) ?? 0))" TextProperty="Item" ValueProperty="Index">
+  <Template>
+    <div>@(context.Item)</div>
+  </Template>
+</RadzenListBox>
+
+<RadzenNumeric TValue="int" Value="@StatisticsState.Value.Input" Change="@(value => ChangeInput(value))" />
+<RadzenButton Click="@(() => NewItem(StatisticsState.Value.Input))" Text="Add" Icon="add" />
+
+<RadzenButton Click="@(() => DeleteItem(StatisticsState.Value.Current))" Text="Delete" Icon="clear" Disabled=@(StatisticsState.Value.Ints.Count == 0) />
+
+@if (StatisticsState.Value.Ints.Count == 0)
+{
+  <div>Add samples for statistics.</div>
+}
+else
+{
+  <div>
+  <RadzenText Text="Min" />
+  <RadzenText Text="@(ArrayStatistic.Min(StatisticsState.Value.Ints).ToString())" />
+
+  <RadzenText Text="Max" />
+  <RadzenText Text="@(ArrayStatistic.Max(StatisticsState.Value.Ints).ToString())" />
+
+  <RadzenText Text="Average" />
+  <RadzenText Text="@(ArrayStatistic.Average(StatisticsState.Value.Ints).ToString())" />
+
+  <RadzenText Text="Sum" />
+  <RadzenText Text="@(ArrayStatistic.Sum(StatisticsState.Value.Ints).ToString())" />
+</div>
+}

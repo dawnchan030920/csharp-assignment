@@ -1,35 +1,12 @@
 namespace Core;
 
-public class ArrayStatistic
+public static class ArrayStatistic
 {
-    public ArrayStatistic(List<int> numbers)
-    {
-        Numbers = numbers;
-    }
+	public static int Max(List<int> ints) => ints.Max();
 
-    public List<int> Numbers
-	{
-		get;
-		set;
-	}
+	public static int Min(List<int> ints) => ints.Min();
 
-	public int Max
-	{
-		get => Numbers.Max();
-	}
+	public static double Average(List<int> ints) => ints.Average();
 
-	public int Min
-	{
-		get => Numbers.Min();
-	}
-
-	public double Average
-	{
-		get => Numbers.Average();
-	}
-
-	public int Sum
-	{
-		get => Numbers.Sum();
-	}
+	public static int Sum(List<int> ints) => ints.Sum();
 }
