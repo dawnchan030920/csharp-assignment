@@ -1,6 +1,8 @@
 @page "/prime"
 @inherits Fluxor.Blazor.Web.Components.FluxorComponent
 
+<PageTitle>Prime Numbers</PageTitle>
+
 <div>Min</div>
 <RadzenNumeric TValue="int" Value=@PrimeState.Value.Min Change=@(value => ChangeMinValue(value)) Placeholder="Min" Min="2" />
 
