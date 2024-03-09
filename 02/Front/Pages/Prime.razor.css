@@ -1,0 +1,8 @@
+.prime-numbers-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.prime-numbers-item {
+  height: 20px;
+}

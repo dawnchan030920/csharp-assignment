@@ -1,0 +1,24 @@
+@page "/prime"
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+<div>Min</div>
+<RadzenNumeric TValue="int" Value=@PrimeState.Value.Min Change=@(value => ChangeMinValue(value)) Placeholder="Min" Min="2" />
+
+<div>Max</div>
+<RadzenNumeric TValue="int" Value=@PrimeState.Value.Max Change=@(value => ChangeMaxValue(value)) Placeholder="Max" Min="2" />
+
+@if (PrimeState.Value.PrimeNumbers.Count == 0)
+{
+  <div>There's no prime numbers between @PrimeState.Value.Min and @PrimeState.Value.Max</div>
+}
+else
+{
+  <ul class="prime-numbers-container">
+    @foreach (var number in PrimeState.Value.PrimeNumbers)
+    {
+      <li class="prime-numbers-item">
+        @number
+      </li>
+    }
+  </ul>
+}

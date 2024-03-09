@@ -1,0 +1,1 @@
+public record MaxChangeAction(int Value);

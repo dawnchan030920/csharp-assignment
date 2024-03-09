@@ -1,0 +1,1 @@
+public record MinChangeAction(int Value);
