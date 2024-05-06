@@ -36,6 +36,8 @@ public partial class MainViewModel : ObservableObject
         }
         catch (Exception ex)
         {
+            Emails.Clear();
+            Phones.Clear();
             Status = $"Error: {ex.Message}";
         }
     }
